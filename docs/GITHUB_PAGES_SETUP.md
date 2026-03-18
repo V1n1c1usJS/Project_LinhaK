@@ -8,13 +8,12 @@ Este repositório publica dois conteúdos no GitHub Pages:
 ## Como ativar
 
 1. No GitHub, abra **Settings** > **Pages**.
-2. Em **Build and deployment**, selecione **Deploy from a branch**.
-3. Escolha a branch **`gh-pages`** e a pasta **`/ (root)`**.
-4. Salve.
+2. Em **Build and deployment**, selecione **GitHub Actions**.
+3. Salve.
 
 ## Como publicar
 
-O workflow `.github/workflows/deploy-pages.yml` faz o build do showcase, monta o site final e publica tudo na branch `gh-pages`.
+O workflow `.github/workflows/deploy-pages.yml` faz o build do showcase, monta o site final e publica o artefato usando o deploy oficial do GitHub Pages.
 
 Ele roda automaticamente em pushes para:
 
@@ -30,3 +29,9 @@ Também pode ser executado manualmente pela aba **Actions**.
 - `/apresentacao.html` → apresentação
 - `/orcamento.html` → orçamento
 - `/showcase/` → showcase React
+
+## URL esperada
+
+Se o repositório for `Project_LinhaK`, a URL publicada fica neste formato:
+
+- `https://SEU-USUARIO.github.io/Project_LinhaK/`

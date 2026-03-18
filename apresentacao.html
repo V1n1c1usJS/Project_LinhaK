@@ -645,8 +645,8 @@
     .cost-card {
       border: 1px solid var(--gold-light);
       border-radius: 4px;
-      padding: 32px;
-      text-align: center;
+      padding: 28px 28px 24px;
+      text-align: left;
       background: var(--bg);
       display: flex;
       flex-direction: column;
@@ -654,29 +654,73 @@
     }
 
     .cost-card h3 {
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 500;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .cost-card p {
+    .cost-card > p {
       font-family: var(--font-body);
-      font-size: 15px;
+      font-size: 13px;
       color: var(--fg-muted);
       line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .cost-list {
+      list-style: none;
       flex: 1;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+    }
+
+    .cost-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 6px 0;
+      border-bottom: 1px solid hsla(40, 40%, 75%, 0.2);
+      font-family: var(--font-body);
+      font-size: 12px;
+    }
+
+    .cost-list li:last-child {
+      border-bottom: none;
+    }
+
+    .cost-list li span:first-child {
+      color: var(--fg-muted);
+    }
+
+    .cost-list li span:last-child {
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .cost-list li .free {
+      color: hsl(140, 40%, 40%);
+      font-weight: 500;
     }
 
     .cost-card-footer {
       border-top: 1px solid var(--gold-light);
-      padding-top: 16px;
+      padding-top: 14px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
     }
 
     .cost-card-footer .price {
       font-family: var(--font-display);
-      font-size: 20px;
+      font-size: 18px;
       color: var(--fg);
+    }
+
+    .cost-card-footer .price-note {
+      font-family: var(--font-body);
+      font-size: 10px;
+      color: var(--fg-faint);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     /* ── Observations ── */
@@ -1276,32 +1320,94 @@
       <div class="section-header">
         <h2>Custos Recorrentes</h2>
         <div class="gold-divider" style="margin-top:16px"></div>
-        <p style="margin-top:16px">Valores estimados que dependem de volume de acesso, infraestrutura escolhida e
-          serviços contratados.</p>
+        <p style="margin-top:16px">Valores baseados nos serviços mapeados. Custos por transação (pagamento e frete) variam conforme o volume de vendas.</p>
       </div>
 
       <div class="cost-grid">
+
         <div class="cost-card">
           <h3>Hospedagem</h3>
-          <p>Infraestrutura de servidores, CDN e certificados SSL para manter a loja online e segura.</p>
+          <p>VPS cobre front-end, API, arquivos de mídia e banco de dados — tudo em um único plano. Preços promocionais no primeiro ciclo; renovação sobe conforme o plano escolhido.</p>
+          <ul class="cost-list">
+            <li><span>Hostinger KVM 2</span><span>R$ 43,99/mês</span></li>
+            <li><span>↳ renovação (2 anos)</span><span>R$ 77,99/mês</span></li>
+            <li><span>Hostgator VPS NVMe 4</span><span>R$ 30,39/mês</span></li>
+            <li><span>↳ válido por 3 anos</span><span>R$ 1.094,11 total</span></li>
+            <li><span>Escala: plano superior se tráfego crescer</span><span>—</span></li>
+          </ul>
           <div class="cost-card-footer">
-            <span class="price">R$ XXX/mês</span>
+            <span class="price">~R$ 30–44/mês</span>
+            <span class="price-note">promo inicial</span>
           </div>
         </div>
+
         <div class="cost-card">
-          <h3>APIs e Provedores</h3>
-          <p>Custos de serviços externos: gateway de pagamento, APIs de frete e plataforma de email.</p>
+          <h3>API de Pagamentos</h3>
+          <p>Taxa por transação via Pagar.me. Sem mensalidade — o custo escala com as vendas.</p>
+          <ul class="cost-list">
+            <li><span>Pix</span><span>1,19%</span></li>
+            <li><span>Crédito à vista</span><span>5,59%</span></li>
+            <li><span>Parcelado 6×</span><span>13,59%</span></li>
+            <li><span>Boleto pago</span><span>R$ 3,49</span></li>
+            <li><span>Recebimento</span><span>15 dias</span></li>
+          </ul>
           <div class="cost-card-footer">
-            <span class="price">Variável</span>
+            <span class="price">% por venda</span>
+            <span class="price-note">sem mensalidade</span>
           </div>
         </div>
+
+        <div class="cost-card">
+          <h3>API de Frete</h3>
+          <p>SuperFrete — integração gratuita. O custo do envio é por etiqueta, repassado ao cliente ou absorvido pela operação.</p>
+          <ul class="cost-list">
+            <li><span>Acesso à API</span><span class="free">Gratuito</span></li>
+            <li><span>Correios, Jadlog e outros</span><span>Por envio</span></li>
+            <li><span>Geração de etiqueta</span><span>Incluso</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">Gratuito</span>
+            <span class="price-note">custo por envio</span>
+          </div>
+        </div>
+
+        <div class="cost-card">
+          <h3>E-mail Transacional</h3>
+          <p>Envio automático de confirmações, aprovações, rastreio e entrega. Opções via hospedagem ou provedores dedicados (SendGrid, Mailgun).</p>
+          <ul class="cost-list">
+            <li><span>Hostinger E-mail Premium</span><span>R$ 17,99/mês</span></li>
+            <li><span>Hostgator Premium</span><span>R$ 7,95/mês</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">~R$ 8–18/mês</span>
+          </div>
+        </div>
+
+        <div class="cost-card">
+          <h3>Nota Fiscal Eletrônica</h3>
+          <p>Emissão automática de NF-e por pedido via NFe.io. Plano Crescimento com onboarding assistido e monitoramento proativo.</p>
+          <ul class="cost-list">
+            <li><span>NFe.io — Plano Crescimento</span><span>R$ 249/mês</span></li>
+            <li><span>Volume incluso</span><span>Até 500 NFs</span></li>
+            <li><span>100 consultas Inscrição Estadual</span><span>Incluso</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">R$ 249/mês</span>
+          </div>
+        </div>
+
         <div class="cost-card">
           <h3>Manutenção</h3>
-          <p>Atualizações de segurança, correções, monitoramento de performance e suporte técnico contínuo.</p>
+          <p>Suporte técnico sob demanda. Inicia após entrega e validação final do projeto. <em>Se a equipe não for acionada no mês, o valor não é cobrado.</em></p>
+          <ul class="cost-list">
+            <li><span>Valor mensal</span><span>R$ 1.000/mês</span></li>
+            <li><span>Início</span><span>Após validação final</span></li>
+          </ul>
           <div class="cost-card-footer">
-            <span class="price">R$ X.XXX/mês</span>
+            <span class="price">R$ 1.000/mês</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>

@@ -186,6 +186,45 @@
       margin-top: 0;
     }
 
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-light);
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: var(--card-shadow);
+    }
+
+    .hero-link:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow-hover);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .hero-link-primary {
+      background: var(--gold-gradient);
+      color: white;
+      border-color: transparent;
+    }
+
     .hero-brand {
       font-family: var(--font-display);
       font-size: 20px;
@@ -849,7 +888,11 @@
       organizado por entregáveis e frentes de implementação — oferecendo
       maior clareza sobre investimento, escopo e valor de cada etapa.
     </p>
-    <div class="hero-brand fade-up d4">Linha K</div>
+    <div class="hero-actions fade-up d4">
+      <a class="hero-link hero-link-primary" href="./showcase/">Abrir showcase interativo</a>
+      <a class="hero-link" href="./orcamento.html">Ir direto para o orçamento</a>
+    </div>
+    <div class="hero-brand fade-up d5">Linha K</div>
   </section>
 
 

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Linha K — R$ 20.000 — Breakdown</title>
+  <style>
+    :root {
+      --color-text-primary: #1a1a1a;
+      --color-text-secondary: #6b6b6b;
+      --color-text-tertiary: #999;
+      --color-text-info: #185FA5;
+      --color-text-success: #3B6D11;
+      --color-text-warning: #854F0B;
+      --color-background-primary: #fff;
+      --color-background-secondary: #f5f5f3;
+      --color-background-tertiary: #eceae6;
+      --color-background-info: #E6F1FB;
+      --color-background-success: #EAF3DE;
+      --color-background-warning: #FAEEDA;
+      --color-border-tertiary: rgba(0, 0, 0, 0.1);
+      --border-radius-lg: 12px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-text-primary: #e8e6df;
+        --color-text-secondary: #9c9a92;
+        --color-text-tertiary: #73726c;
+        --color-text-info: #85B7EB;
+        --color-text-success: #97C459;
+        --color-text-warning: #FAC775;
+        --color-background-primary: #1e1e1c;
+        --color-background-secondary: #2a2a27;
+        --color-background-tertiary: #333330;
+        --color-background-info: #0C447C;
+        --color-background-success: #27500A;
+        --color-background-warning: #633806;
+        --color-border-tertiary: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-background-primary);
+      color: var(--color-text-primary);
+      padding: 24px;
+      max-width: 720px;
+      margin: 0 auto
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin-bottom: 2px
+    }
+
+    .sub {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-bottom: 16px
+    }
+
+    .mod {
+      margin-bottom: 8px;
+      border: 1px solid var(--color-border-tertiary);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden
+    }
+
+    .mod-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: var(--color-background-secondary)
+    }
+
+    .mod-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-primary)
+    }
+
+    .mod-val {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-info)
+    }
+
+    .mod-items {
+      padding: 4px 14px 8px
+    }
+
+    .it {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--color-border-tertiary)
+    }
+
+    .it:last-child {
+      border: none
+    }
+
+    .it-name {
+      font-size: 12px;
+      color: var(--color-text-primary)
+    }
+
+    .it-meta {
+      font-size: 11px;
+      color: var(--color-text-tertiary);
+      margin-top: 1px
+    }
+
+    .it-val {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      white-space: nowrap
+    }
+
+    .bar-wrap {
+      height: 6px;
+      background: var(--color-background-tertiary);
+      border-radius: 3px;
+      overflow: hidden
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 3px
+    }
+
+    .total-box {
+      margin-top: 16px;
+      padding: 14px;
+      background: var(--color-background-info);
+      border-radius: var(--border-radius-lg)
+    }
+
+    .tr {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px
+    }
+
+    .tr:last-child {
+      margin: 0
+    }
+
+    .tl {
+      font-size: 13px;
+      color: var(--color-text-info)
+    }
+
+    .tv {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-info)
+    }
+
+    .tv-big {
+      font-size: 20px
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--color-border-tertiary);
+      margin: 8px 0;
+      opacity: .5
+    }
+
+    .note {
+      font-size: 11px;
+      color: var(--color-text-tertiary);
+      margin-top: 10px;
+      line-height: 1.6
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Core Linha K — R$ 20.000</h2>
+  <div class="sub">MVP funcional: loja completa + checkout + pagamento + frete + admin básico</div>
+  <div id="mods"></div>
+  <div class="total-box" id="totals"></div>
+  <p class="note">* Valores distribuídos proporcionalmente ao esforço técnico de cada módulo. Considera equipe fullstack
+    (1-2 devs + design). Prazo estimado: 6 a 8 semanas para entrega do core completo. Manutenção mensal não inclusa.</p>
+  <script>
+    const T = 20000;
+    const mods = [
+      {
+        name: "Frontend — Vitrine & UX", pct: 30, color: "#378ADD", items: [
+          { name: "Home, header, footer, navegação responsiva", pct: 25 },
+          { name: "Catálogo 55 perfumes (grid, filtros por categoria, busca)", pct: 35 },
+          { name: "Página de produto (pirâmide olfativa, descrição, relacionados)", pct: 25 },
+          { name: "Design responsivo mobile-first", pct: 15 },
+        ]
+      },
+      {
+        name: "Frontend — Checkout & Carrinho", pct: 18, color: "#1D9E75", items: [
+          { name: "Sacola / carrinho com gestão de quantidade", pct: 25 },
+          { name: "Fluxo: cadastro → endereço → pagamento → confirmação", pct: 50 },
+          { name: "Área do cliente (login, histórico, rastreamento)", pct: 25 },
+        ]
+      },
+      {
+        name: "Backend — API & Banco de Dados", pct: 22, color: "#7F77DD", items: [
+          { name: "Modelagem: produtos, categorias, pedidos, usuários, estoque", pct: 35 },
+          { name: "API REST/GraphQL completa (CRUD)", pct: 30 },
+          { name: "Autenticação (cadastro, login, recuperação senha)", pct: 15 },
+          { name: "Controle de estoque (entrada/saída)", pct: 20 },
+        ]
+      },
+      {
+        name: "Integrações essenciais", pct: 20, color: "#D85A30", items: [
+          { name: "Stone ou Mercado Pago (Pix, cartão, boleto)", pct: 40 },
+          { name: "SuperFrete (cálculo, etiqueta, rastreamento)", pct: 35 },
+          { name: "E-mail transacional (SendGrid/MailGun)", pct: 25 },
+        ]
+      },
+      {
+        name: "Admin + Deploy", pct: 10, color: "#888780", items: [
+          { name: "Painel admin básico (gerenciar produtos, pedidos, estoque)", pct: 55 },
+          { name: "Deploy, domínio, SSL, hospedagem", pct: 30 },
+          { name: "Testes e ajustes finais", pct: 15 },
+        ]
+      },
+    ];
+    const fmt = v => 'R$ ' + v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    let html = '';
+    mods.forEach(m => {
+      const val = T * m.pct / 100;
+      let ih = '';
+      m.items.forEach(it => {
+        const iv = val * it.pct / 100;
+        ih += `<div class="it"><div><div class="it-name">${it.name}</div><div class="it-meta">${it.pct}% do módulo · ~${Math.round(iv / 80 * 10) / 10} semanas</div></div><div class="it-val">${fmt(iv)}</div></div>`;
+      });
+      html += `<div class="mod"><div class="mod-head"><span class="mod-name">${m.name}</span><span class="mod-val">${fmt(val)}</span></div><div class="bar-wrap"><div class="bar-fill" style="width:${m.pct}%;background:${m.color}"></div></div><div class="mod-items">${ih}</div></div>`;
+    });
+    document.getElementById('mods').innerHTML = html;
+    document.getElementById('totals').innerHTML = `
+<div class="tr"><span class="tl">Frontend (vitrine + checkout)</span><span class="tv">${fmt(T * 0.48)} <span style="font-weight:400;font-size:11px">· 48%</span></span></div>
+<div class="tr"><span class="tl">Backend (API + banco + auth + estoque)</span><span class="tv">${fmt(T * 0.22)} <span style="font-weight:400;font-size:11px">· 22%</span></span></div>
+<div class="tr"><span class="tl">Integrações (pagamento + frete + email)</span><span class="tv">${fmt(T * 0.20)} <span style="font-weight:400;font-size:11px">· 20%</span></span></div>
+<div class="tr"><span class="tl">Admin + deploy</span><span class="tv">${fmt(T * 0.10)} <span style="font-weight:400;font-size:11px">· 10%</span></span></div>
+<div class="divider"></div>
+<div class="tr"><span class="tl" style="font-weight:500">Total core</span><span class="tv tv-big">${fmt(T)}</span></div>
+<div class="divider"></div>
+<div class="tr"><span class="tl">Prazo estimado</span><span class="tv">6 a 8 semanas</span></div>
+<div class="tr"><span class="tl">Valor/hora implícito (~250h)</span><span class="tv">~R$ 80/h</span></div>
+`;
+  </script>
+</body>
+
+</html>

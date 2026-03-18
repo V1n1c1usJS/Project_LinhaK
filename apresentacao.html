@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linha K — Proposta Comercial</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: hsl(40, 47%, 56%);
+      --gold-light: hsl(40, 40%, 75%);
+      --gold-dark: hsl(40, 50%, 40%);
+      --bg: hsl(40, 33%, 97%);
+      --bg-alt: hsl(30, 25%, 94%);
+      --fg: hsl(0, 0%, 10%);
+      --fg-muted: hsl(0, 0%, 40%);
+      --fg-faint: hsl(0, 0%, 60%);
+      --border: hsl(30, 20%, 88%);
+      --card-shadow: 0 4px 24px -4px hsla(40, 47%, 56%, 0.08);
+      --card-shadow-hover: 0 8px 32px -4px hsla(40, 47%, 56%, 0.15);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+      --gold-gradient: linear-gradient(135deg, hsl(40, 47%, 56%), hsl(45, 55%, 65%), hsl(40, 47%, 56%));
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease-out forwards;
+    }
+
+    .d1 {
+      animation-delay: 0.1s;
+    }
+
+    .d2 {
+      animation-delay: 0.2s;
+    }
+
+    .d3 {
+      animation-delay: 0.3s;
+    }
+
+    .d4 {
+      animation-delay: 0.4s;
+    }
+
+    .d5 {
+      animation-delay: 0.5s;
+    }
+
+    /* ── Typography ── */
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+    }
+
+    .gold-text {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gold-divider {
+      width: 64px;
+      height: 1px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .gold-divider-wide {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .container-sm {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: radial-gradient(ellipse at 50% 30%, hsla(40, 47%, 56%, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--gold-light);
+      border-radius: 100px;
+      padding: 8px 20px;
+      margin-bottom: 40px;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .hero-badge span {
+      font-family: var(--font-body);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-weight: 500;
+      line-height: 1.1;
+      max-width: 700px;
+      color: var(--fg);
+    }
+
+    .hero-desc {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--fg-muted);
+      max-width: 620px;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      margin-top: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-light);
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: var(--card-shadow);
+    }
+
+    .hero-link:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow-hover);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .hero-link-primary {
+      background: var(--gold-gradient);
+      color: white;
+      border-color: transparent;
+    }
+
+    .hero-brand {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 40px;
+    }
+
+    /* ── Section spacing ── */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-alt {
+      background: var(--bg-alt);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 500;
+      color: var(--fg);
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* ── About Model ── */
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: left;
+    }
+
+    .model-item .bar {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .model-item h3 {
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--fg);
+      margin-bottom: 12px;
+    }
+
+    .model-item p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.8;
+    }
+
+    /* ── Service Blocks ── */
+    .block-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .block-letter {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      color: var(--gold);
+      opacity: 0.25;
+      line-height: 1;
+    }
+
+    .block-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .block-content {
+      margin-top: 32px;
+    }
+
+    .block-desc {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--fg-muted);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .block-items {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .block-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--fg);
+      border-bottom: 1px solid hsla(40, 40%, 75%, 0.2);
+    }
+
+    .block-items li:last-child {
+      border-bottom: none;
+    }
+
+    .block-items li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    /* ── Price Card ── */
+    .price-card {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid var(--gold-light);
+      border-radius: 4px;
+      padding: 20px 32px;
+      background: var(--bg);
+      box-shadow: var(--card-shadow);
+    }
+
+    .price-card-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 8px;
+    }
+
+    .price-card-value {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--fg);
+      letter-spacing: -0.02em;
+    }
+
+    .price-card-pct {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--fg-faint);
+      margin-top: 4px;
+    }
+
+    /* ── Prototype Frame ── */
+    .frame {
+      position: relative;
+      border: 1px solid var(--gold-light);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg-alt);
+      margin-bottom: 16px;
+    }
+
+    .frame-browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: hsla(30, 20%, 88%, 0.5);
+      border-bottom: 1px solid var(--gold-light);
+    }
+
+    .frame-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold-light);
+    }
+
+    .frame-url {
+      font-family: var(--font-body);
+      font-size: 10px;
+      color: var(--fg-faint);
+      margin-left: 8px;
+    }
+
+    .frame-body {
+      position: relative;
+      overflow: hidden;
+      padding-top: 56.25%;
+      /* 16:9 */
+      background: var(--bg);
+    }
+
+    .frame-body iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1440px;
+      height: 900px;
+      border: none;
+      transform-origin: top left;
+      pointer-events: none;
+    }
+
+    .frames-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .frames-row.two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .frame-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 0 12px;
+    }
+
+    .frame-label .bar {
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .frame-label span {
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+
+    /* ── Summary ── */
+    .summary-box {
+      background: linear-gradient(135deg, hsla(40, 47%, 56%, 0.08), hsla(30, 25%, 94%, 0.5));
+      border: 1px solid var(--gold-light);
+      border-radius: 8px;
+      padding: 40px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid hsla(40, 40%, 75%, 0.3);
+    }
+
+    .summary-row:last-child {
+      border: none;
+    }
+
+    .summary-row .label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--fg-muted);
+    }
+
+    .summary-row .value {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .summary-row .pct {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--fg-faint);
+      margin-left: 8px;
+    }
+
+    .summary-divider {
+      height: 1px;
+      background: var(--gold-light);
+      margin: 8px 0;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 16px 0 0;
+    }
+
+    .summary-total .label {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .summary-total .value {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .summary-meta {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0 0;
+    }
+
+    .summary-meta span {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--fg-faint);
+    }
+
+    .summary-meta strong {
+      font-weight: 500;
+      color: var(--fg-muted);
+    }
+
+    /* ── Bar Chart ── */
+    .bar-chart {
+      margin-top: 32px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .bar-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--fg-muted);
+      width: 140px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 8px;
+      background: hsla(30, 20%, 88%, 0.6);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+
+    .bar-value {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--fg);
+      width: 60px;
+      flex-shrink: 0;
+    }
+
+    /* ── Optional Modules Grid ── */
+    .opt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .opt-card {
+      border: 1px solid var(--gold-light);
+      border-radius: 4px;
+      padding: 28px;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .opt-card:hover {
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .opt-card h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--fg);
+      margin-bottom: 10px;
+    }
+
+    .opt-card p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--fg-muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .opt-card-footer {
+      border-top: 1px solid var(--gold-light);
+      padding-top: 16px;
+    }
+
+    .opt-card-footer .price {
+      font-family: var(--font-display);
+      font-size: 17px;
+      color: var(--fg);
+    }
+
+    .opt-card-footer .note {
+      font-family: var(--font-body);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg-faint);
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* ── Recurring Costs ── */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cost-card {
+      border: 1px solid var(--gold-light);
+      border-radius: 4px;
+      padding: 28px 28px 24px;
+      text-align: left;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .cost-card h3 {
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .cost-card > p {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--fg-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .cost-list {
+      list-style: none;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .cost-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 6px 0;
+      border-bottom: 1px solid hsla(40, 40%, 75%, 0.2);
+      font-family: var(--font-body);
+      font-size: 12px;
+    }
+
+    .cost-list li:last-child {
+      border-bottom: none;
+    }
+
+    .cost-list li span:first-child {
+      color: var(--fg-muted);
+    }
+
+    .cost-list li span:last-child {
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .cost-list li .free {
+      color: hsl(140, 40%, 40%);
+      font-weight: 500;
+    }
+
+    .cost-card-footer {
+      border-top: 1px solid var(--gold-light);
+      padding-top: 14px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .cost-card-footer .price {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: var(--fg);
+    }
+
+    .cost-card-footer .price-note {
+      font-family: var(--font-body);
+      font-size: 10px;
+      color: var(--fg-faint);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Observations ── */
+    .obs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 40px;
+    }
+
+    .obs-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid hsla(40, 40%, 75%, 0.3);
+    }
+
+    .obs-num {
+      font-family: var(--font-display);
+      font-size: 12px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .obs-text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--fg);
+      line-height: 1.6;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 500;
+      color: var(--fg);
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--fg-muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      padding: 16px 40px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: none;
+      transition: all 0.4s;
+    }
+
+    .cta-btn:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    .cta-btn svg {
+      transition: transform 0.3s;
+    }
+
+    .cta-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    .cta-brand {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 48px;
+    }
+
+    .cta-confidential {
+      font-family: var(--font-body);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-faint);
+      margin-top: 8px;
+    }
+
+    .block-info {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .block-info .block-desc {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .block-info .block-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+
+      .model-grid,
+      .opt-grid,
+      .cost-grid,
+      .obs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .frames-row,
+      .frames-row.two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-box {
+        padding: 24px;
+      }
+
+      .bar-label {
+        width: 100px;
+        font-size: 10px;
+      }
+
+      .opt-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .opt-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-badge fade-up">
+      <div class="hero-badge-dot"></div>
+    </div>
+    <h1 class="fade-up d1">
+      Proposta Comercial por <em class="gold-text" style="font-style:normal">Blocos de Entrega</em>
+    </h1>
+    <div class="gold-divider fade-up d2" style="margin:32px auto"></div>
+    <p class="hero-desc fade-up d3">
+      O orçamento a seguir é baseado no protótipo apresentado para a Linha K,
+      organizado por entregáveis e frentes de implementação — oferecendo
+      maior clareza sobre investimento, escopo e valor de cada etapa.
+    </p>
+    <div class="hero-actions fade-up d4">
+      <a class="hero-link hero-link-primary" href="./showcase/">Abrir showcase interativo</a>
+      <a class="hero-link" href="./orcamento.html">Ir direto para o orçamento</a>
+    </div>
+    <div class="hero-brand fade-up d5">Linha K</div>
+  </section>
+
+
+  <!-- ═══ ABOUT THE MODEL ═══ -->
+  <section class="section section-alt">
+    <div class="container-sm">
+      <div class="section-header">
+        <h2>Sobre o modelo de orçamento</h2>
+        <div class="gold-divider" style="margin-top:16px"></div>
+      </div>
+      <div class="model-grid">
+        <div class="model-item">
+          <div class="bar"></div>
+          <h3>Visualização pelo protótipo</h3>
+          <p>Os prints do protótipo ilustram a solução proposta, permitindo visualizar a experiência antes da
+            implementação.</p>
+        </div>
+        <div class="model-item">
+          <div class="bar"></div>
+          <h3>Investimento por entregáveis</h3>
+          <p>O valor de cada bloco reflete o conjunto de funcionalidades entregues — não a quantidade de telas, mas o
+            impacto operacional real.</p>
+        </div>
+        <div class="model-item">
+          <div class="bar"></div>
+          <h3>Conexão com a operação</h3>
+          <p>A organização por blocos conecta diretamente o investimento com operação, integrações e o valor real do
+            projeto para o negócio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ BLOCK A ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="block-header">
+        <span class="block-letter">A</span>
+        <h2 class="block-title">Implantação do Ecommerce</h2>
+      </div>
+      <div class="gold-divider-wide"></div>
+
+      <div class="block-content">
+        <div class="block-info">
+          <div style="flex:1;min-width:280px">
+            <p class="block-desc">
+              Bloco principal de implantação da operação digital da marca. Contempla toda a experiência de compra — da
+              descoberta do produto à confirmação do pedido — com identidade visual premium, navegação intuitiva e
+              design responsivo para mobile e desktop.
+            </p>
+            <ul class="block-items">
+              <li>Home com hero section e vitrine de produtos</li>
+              <li>Catálogo completo com filtros por categoria, faixa de preço, além de busca com
+                autocomplete</li>
+              <li>Página de produto com galeria, pirâmide olfativa (topo, coração e fundo)</li>
+              <li>Carrinho de compras com ajuste de quantidade, resumo do pedido e indicador de frete</li>
+              <li>Checkout em 3 etapas: identificação do cliente → endereço de entrega → seleção de pagamento</li>
+              <li>Área do cliente com histórico de pedidos, status de entrega e rastreamento</li>
+              <li>Design responsivo mobile-first com animações suaves e identidade visual dourada premium</li>
+            </ul>
+          </div>
+          <div class="block-right">
+            <div class="price-card">
+              <span class="price-card-label">Investimento</span>
+              <span class="price-card-value">R$ 9.600</span>
+              <span class="price-card-pct">48% do projeto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="frames-row">
+          <div class="frame">
+            <div class="frame-browser-bar">
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <span class="frame-url">linhak.com.br</span>
+            </div>
+            <div class="frame-body"><iframe src="http://localhost:8080/" loading="lazy"></iframe></div>
+            <div class="frame-label">
+              <div class="bar"></div><span>Home / Vitrine</span>
+            </div>
+          </div>
+        </div>
+        <div class="frames-row">
+          <div class="frame">
+            <div class="frame-browser-bar">
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <span class="frame-url">linhak.com.br/catalogo</span>
+            </div>
+            <div class="frame-body"><iframe src="http://localhost:8080/catalogo" loading="lazy"></iframe></div>
+            <div class="frame-label">
+              <div class="bar"></div><span>Catálogo / Filtros</span>
+            </div>
+          </div>
+        </div>
+        <div class="frames-row two-col">
+          <div class="frame">
+            <div class="frame-browser-bar">
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <span class="frame-url">linhak.com.br/produto/k-noir-absolu</span>
+            </div>
+            <div class="frame-body"><iframe src="http://localhost:8080/produto/lk-001" loading="lazy"></iframe></div>
+            <div class="frame-label">
+              <div class="bar"></div><span>Produto / Detalhes</span>
+            </div>
+          </div>
+          <div class="frame">
+            <div class="frame-browser-bar">
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <span class="frame-url">linhak.com.br/carrinho</span>
+            </div>
+            <div class="frame-body"><iframe src="http://localhost:8080/carrinho" loading="lazy"></iframe></div>
+            <div class="frame-label">
+              <div class="bar"></div><span>Carrinho</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ DIVIDER ═══ -->
+  <div style="padding:40px 0">
+    <div class="gold-divider"></div>
+  </div>
+
+
+  <!-- ═══ BLOCK B ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="block-header">
+        <span class="block-letter">B</span>
+        <h2 class="block-title">Integrações Operacionais</h2>
+      </div>
+      <div class="gold-divider-wide"></div>
+
+      <div class="block-content">
+        <div class="block-info">
+          <div style="flex:1;min-width:280px">
+            <p class="block-desc">
+              Integrações que conectam a loja à operação real. Garante que o pagamento seja processado com segurança, o
+              frete calculado automaticamente e o cliente informado em cada etapa — eliminando controles manuais e
+              reduzindo falhas operacionais.
+            </p>
+            <ul class="block-items">
+              <li>Gateway de pagamento integrado (Stone) com suporte a Pix com desconto e cartão de
+                crédito.</li>
+              <li>Cálculo de frete em tempo real via SuperFrete com cotação por CEP, geração de etiqueta e associação
+                automática ao pedido</li>
+              <li>Rastreamento de entrega com atualização de status por transportadora (Correios, Jadlog)
+                diretamente no painel do cliente</li>
+              <li>E-mails transacionais automáticos: confirmação de pedido, aprovação de pagamento, envio com código de
+                rastreio e entrega confirmada</li>
+            </ul>
+          </div>
+          <div class="block-right">
+            <div class="price-card">
+              <span class="price-card-label">Investimento</span>
+              <span class="price-card-value">R$ 4.000</span>
+              <span class="price-card-pct">20% do projeto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="frames-row">
+          <div class="frame">
+            <div class="frame-browser-bar">
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <span class="frame-url">linhak.com.br/checkout</span>
+            </div>
+            <div class="frame-body"><iframe src="http://localhost:8080/checkout" loading="lazy"></iframe></div>
+            <div class="frame-label">
+              <div class="bar"></div><span>Checkout / Pagamento</span>
+            </div>
+          </div>
+        </div>
+        <div class="frames-row">
+          <div class="frame">
+            <div class="frame-browser-bar">
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <span class="frame-url">linhak.com.br/pedido-confirmado</span>
+            </div>
+            <div class="frame-body"><iframe src="http://localhost:8080/pedido-confirmado" loading="lazy"></iframe></div>
+            <div class="frame-label">
+              <div class="bar"></div><span>Confirmação / Rastreio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ DIVIDER ═══ -->
+  <div style="padding:40px 0">
+    <div class="gold-divider"></div>
+  </div>
+
+
+  <!-- ═══ BLOCK C ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="block-header">
+        <span class="block-letter">C</span>
+        <h2 class="block-title">Gestão e Operação</h2>
+      </div>
+      <div class="gold-divider-wide"></div>
+
+      <div class="block-content">
+        <div class="block-info">
+          <div style="flex:1;min-width:280px">
+            <p class="block-desc">
+              Estrutura interna que sustenta toda a operação: banco de dados, API, controle de estoque e painel
+              administrativo. Substitui planilhas por um sistema centralizado, rastreável e com visibilidade completa do
+              ciclo do pedido — do faturamento à entrega confirmada.
+            </p>
+            <ul class="block-items">
+              <li>Modelagem completa do banco de dados: produtos, variações, categorias, pedidos, usuários, endereços e
+                movimentações de estoque</li>
+              <li>API REST com autenticação JWT, cobrindo todos os fluxos de loja, checkout, pedidos e administração
+              </li>
+              <li>Controle de estoque integrado: entrada manual, saída automática por venda e
+                histórico de movimentações</li>
+              <li>Painel administrativo completo: gestão de produtos, acompanhamento de pedidos por status, atualização
+                de etapas e visão do pipeline (Faturado → Separação → Enviado → Entregue)</li>
+              <li>Deploy em produção com domínio personalizado, HTTPS/SSL, CDN e ambiente otimizado para performance
+              </li>
+              <li>Ciclo de testes, ajustes e validação antes da publicação final</li>
+            </ul>
+          </div>
+          <div class="block-right">
+            <div class="price-card">
+              <span class="price-card-label">Investimento</span>
+              <span class="price-card-value">R$ 6.400</span>
+              <span class="price-card-pct">32% do projeto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="frames-row">
+          <div class="frame">
+            <div class="frame-browser-bar">
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <span class="frame-url">linhak.com.br/admin</span>
+            </div>
+            <div class="frame-body"><iframe src="http://localhost:8080/admin" loading="lazy"></iframe></div>
+            <div class="frame-label">
+              <div class="bar"></div><span>Admin / Dashboard</span>
+            </div>
+          </div>
+        </div>
+        <div class="frames-row">
+          <div class="frame">
+            <div class="frame-browser-bar">
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <div class="frame-dot"></div>
+              <span class="frame-url">linhak.com.br/minha-conta</span>
+            </div>
+            <div class="frame-body"><iframe src="http://localhost:8080/minha-conta" loading="lazy"></iframe></div>
+            <div class="frame-label">
+              <div class="bar"></div><span>Área do Cliente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SUMMARY ═══ -->
+  <section class="section section-alt">
+    <div class="container-sm">
+      <div class="section-header">
+        <span class="section-label">Investimento total</span>
+        <h2>Resumo do Core</h2>
+        <div class="gold-divider" style="margin-top:16px"></div>
+      </div>
+
+      <div class="summary-box">
+        <div class="summary-row">
+          <span class="label">A — Implantação do Ecommerce</span>
+          <span class="value">R$ 9.600 <span class="pct">48%</span></span>
+        </div>
+        <div class="summary-row">
+          <span class="label">B — Integrações Operacionais</span>
+          <span class="value">R$ 4.000 <span class="pct">20%</span></span>
+        </div>
+        <div class="summary-row">
+          <span class="label">C — Gestão e Operação</span>
+          <span class="value">R$ 6.400 <span class="pct">32%</span></span>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-total">
+          <span class="label">Total core</span>
+          <span class="value">R$ 20.000</span>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-meta">
+          <span>Prazo estimado: <strong>6 a 8 semanas</strong></span>
+          <span>Valor/hora implícito (~250h): <strong>~R$ 80/h</strong></span>
+        </div>
+      </div>
+
+      <div class="bar-chart">
+        <div class="bar-row">
+          <span class="bar-label">Frontend (Vitrine + Checkout)</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:48%;background:var(--gold)"></div>
+          </div>
+          <span class="bar-value">R$ 9.600</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Backend + Admin</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:32%;background:hsl(40,50%,40%)"></div>
+          </div>
+          <span class="bar-value">R$ 6.400</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Integrações</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:20%;background:hsl(40,40%,65%)"></div>
+          </div>
+          <span class="bar-value">R$ 4.000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ OPTIONAL MODULES ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Expansão estratégica</span>
+        <h2>Futuras Implementações</h2>
+        <div class="gold-divider" style="margin-top:16px"></div>
+      </div>
+
+      <div class="opt-grid">
+        <div class="opt-card">
+          <h3>Avaliações de Produtos</h3>
+          <p>Sistema de reviews com nota de 1 a 5 estrelas e comentário livre. Exibição pública na página do produto,
+            média geral e contagem de avaliações — gerando prova social e aumentando a conversão.</p>
+          <div class="opt-card-footer">
+            <span class="price">R$ X.XXX</span>
+            <span class="note">Sob escopo</span>
+          </div>
+        </div>
+        <div class="opt-card">
+          <h3>Instagram Shopping</h3>
+          <p>Sincronização do catálogo da Linha K com a loja do Instagram: produto com foto, preço e botão de compra
+            diretamente no feed e nos stories. O usuário clica no produto e é levado direto para a página de compra —
+            sem sair do Instagram, sem fricção. Ideal para converter seguidores em clientes.</p>
+          <div class="opt-card-footer">
+            <span class="price">R$ X.XXX</span>
+            <span class="note">Sob escopo</span>
+          </div>
+        </div>
+        <div class="opt-card">
+          <h3>Business Intelligence</h3>
+          <p>Painel gerencial com KPIs em tempo real: faturamento diário, semanal e mensal, ticket médio, produtos e
+            categorias mais vendidas, e taxa de conversão por canal. Visão consolidada para decisões rápidas sobre
+            estoque, e mix de produtos — sem precisar de planilhas.</p>
+          <div class="opt-card-footer">
+            <span class="price">R$ X.XXX</span>
+            <span class="note">Sob escopo</span>
+          </div>
+        </div>
+        <div class="opt-card">
+          <h3>Promoções e Cupons</h3>
+          <p>Motor de promoções flexível: desconto percentual ou fixo por produto, categoria ou carrinho, com período de
+            vigência e limite de usos. Cupons personalizados para campanhas de marketing, parceiros ou reativação de
+            clientes. Indicação automática do item em promoção na vitrine e na listagem.</p>
+          <div class="opt-card-footer">
+            <span class="price">R$ X.XXX</span>
+            <span class="note">Sob escopo</span>
+          </div>
+        </div>
+        <div class="opt-card">
+          <h3>Recomendações Inteligentes</h3>
+          <p>Engine de recomendação que exibe produtos relevantes com base no histórico de compras, comportamento de
+            navegação e produtos mais vendidos. Seções como "Quem comprou X também levou Y" e "Fragrâncias semelhantes"
+            aumentam o ticket médio e o tempo de permanência na loja.</p>
+          <div class="opt-card-footer">
+            <span class="price">R$ X.XXX</span>
+            <span class="note">Sob escopo</span>
+          </div>
+        </div>
+        <div class="opt-card">
+          <h3>Integração WhatsApp</h3>
+          <p>Mensagens automáticas via WhatsApp Business API em cada etapa do pedido: confirmação de compra, aprovação
+            de pagamento, despacho com link de rastreio e confirmação de entrega. Substitui o e-mail como canal
+            principal de comunicação com o cliente — com abertura muito maior.</p>
+          <div class="opt-card-footer">
+            <span class="price">R$ X.XXX</span>
+            <span class="note">Sob escopo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ RECURRING COSTS ═══ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Custos Recorrentes</h2>
+        <div class="gold-divider" style="margin-top:16px"></div>
+        <p style="margin-top:16px">Valores baseados nos serviços mapeados. Custos por transação (pagamento e frete) variam conforme o volume de vendas.</p>
+      </div>
+
+      <div class="cost-grid">
+
+        <div class="cost-card">
+          <h3>Hospedagem</h3>
+          <p>VPS cobre front-end, API, arquivos de mídia e banco de dados — tudo em um único plano. Preços promocionais no primeiro ciclo; renovação sobe conforme o plano escolhido.</p>
+          <ul class="cost-list">
+            <li><span>Hostinger KVM 2</span><span>R$ 43,99/mês</span></li>
+            <li><span>↳ renovação (2 anos)</span><span>R$ 77,99/mês</span></li>
+            <li><span>Hostgator VPS NVMe 4</span><span>R$ 30,39/mês</span></li>
+            <li><span>↳ válido por 3 anos</span><span>R$ 1.094,11 total</span></li>
+            <li><span>Escala: plano superior se tráfego crescer</span><span>—</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">~R$ 30–44/mês</span>
+            <span class="price-note">promo inicial</span>
+          </div>
+        </div>
+
+        <div class="cost-card">
+          <h3>API de Pagamentos</h3>
+          <p>Taxa por transação via Pagar.me. Sem mensalidade — o custo escala com as vendas.</p>
+          <ul class="cost-list">
+            <li><span>Pix</span><span>1,19%</span></li>
+            <li><span>Crédito à vista</span><span>5,59%</span></li>
+            <li><span>Parcelado 6×</span><span>13,59%</span></li>
+            <li><span>Boleto pago</span><span>R$ 3,49</span></li>
+            <li><span>Recebimento</span><span>15 dias</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">% por venda</span>
+            <span class="price-note">sem mensalidade</span>
+          </div>
+        </div>
+
+        <div class="cost-card">
+          <h3>API de Frete</h3>
+          <p>SuperFrete — integração gratuita. O custo do envio é por etiqueta, repassado ao cliente ou absorvido pela operação.</p>
+          <ul class="cost-list">
+            <li><span>Acesso à API</span><span class="free">Gratuito</span></li>
+            <li><span>Correios, Jadlog e outros</span><span>Por envio</span></li>
+            <li><span>Geração de etiqueta</span><span>Incluso</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">Gratuito</span>
+            <span class="price-note">custo por envio</span>
+          </div>
+        </div>
+
+        <div class="cost-card">
+          <h3>E-mail Transacional</h3>
+          <p>Envio automático de confirmações, aprovações, rastreio e entrega. Opções via hospedagem ou provedores dedicados (SendGrid, Mailgun).</p>
+          <ul class="cost-list">
+            <li><span>Hostinger E-mail Premium</span><span>R$ 17,99/mês</span></li>
+            <li><span>Hostgator Premium</span><span>R$ 7,95/mês</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">~R$ 8–18/mês</span>
+          </div>
+        </div>
+
+        <div class="cost-card">
+          <h3>Nota Fiscal Eletrônica</h3>
+          <p>Emissão automática de NF-e por pedido via NFe.io. Plano Crescimento com onboarding assistido e monitoramento proativo.</p>
+          <ul class="cost-list">
+            <li><span>NFe.io — Plano Crescimento</span><span>R$ 249/mês</span></li>
+            <li><span>Volume incluso</span><span>Até 500 NFs</span></li>
+            <li><span>100 consultas Inscrição Estadual</span><span>Incluso</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">R$ 249/mês</span>
+          </div>
+        </div>
+
+        <div class="cost-card">
+          <h3>Manutenção</h3>
+          <p>Suporte técnico sob demanda. Inicia após entrega e validação final do projeto. <em>Se a equipe não for acionada no mês, o valor não é cobrado.</em></p>
+          <ul class="cost-list">
+            <li><span>Valor mensal</span><span>R$ 1.000/mês</span></li>
+            <li><span>Início</span><span>Após validação final</span></li>
+          </ul>
+          <div class="cost-card-footer">
+            <span class="price">R$ 1.000/mês</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta">
+    <div class="gold-divider" style="margin-bottom:48px"></div>
+    <p>
+      Esta proposta está organizada por blocos para facilitar a validação comercial
+      e o alinhamento de prioridades.
+    </p>
+    <div class="cta-brand">Linha K</div>
+    <div class="cta-confidential">Proposta comercial confidencial</div>
+  </section>
+
+</html>

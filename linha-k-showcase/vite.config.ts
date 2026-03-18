@@ -3,9 +3,18 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
+const normalizeBasePath = (value?: string) => {
+  if (!value || value === "/") {
+    return "/";
+  }
+
+  const withLeadingSlash = value.startsWith("/") ? value : `/${value}`;
+  return withLeadingSlash.endsWith("/") ? withLeadingSlash : `${withLeadingSlash}/`;
+};
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/linha-k-showcase/' : '/',
+  base: normalizeBasePath(process.env.VITE_BASE_PATH ?? (mode === "production" ? "/showcase/" : "/")),
   server: {
     host: "::",
     port: 8080,

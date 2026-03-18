@@ -1016,7 +1016,7 @@
               <div class="frame-dot"></div>
               <span class="frame-url">linhak.com.br</span>
             </div>
-            <div class="frame-body"><iframe src="http://localhost:8080/" loading="lazy"></iframe></div>
+            <div class="frame-body"><iframe data-showcase-route="/" loading="lazy"></iframe></div>
             <div class="frame-label">
               <div class="bar"></div><span>Home / Vitrine</span>
             </div>
@@ -1030,7 +1030,7 @@
               <div class="frame-dot"></div>
               <span class="frame-url">linhak.com.br/catalogo</span>
             </div>
-            <div class="frame-body"><iframe src="http://localhost:8080/catalogo" loading="lazy"></iframe></div>
+            <div class="frame-body"><iframe data-showcase-route="/catalogo" loading="lazy"></iframe></div>
             <div class="frame-label">
               <div class="bar"></div><span>Catálogo / Filtros</span>
             </div>
@@ -1044,7 +1044,7 @@
               <div class="frame-dot"></div>
               <span class="frame-url">linhak.com.br/produto/k-noir-absolu</span>
             </div>
-            <div class="frame-body"><iframe src="http://localhost:8080/produto/lk-001" loading="lazy"></iframe></div>
+            <div class="frame-body"><iframe data-showcase-route="/produto/lk-001" loading="lazy"></iframe></div>
             <div class="frame-label">
               <div class="bar"></div><span>Produto / Detalhes</span>
             </div>
@@ -1056,7 +1056,7 @@
               <div class="frame-dot"></div>
               <span class="frame-url">linhak.com.br/carrinho</span>
             </div>
-            <div class="frame-body"><iframe src="http://localhost:8080/carrinho" loading="lazy"></iframe></div>
+            <div class="frame-body"><iframe data-showcase-route="/carrinho" loading="lazy"></iframe></div>
             <div class="frame-label">
               <div class="bar"></div><span>Carrinho</span>
             </div>
@@ -1118,7 +1118,7 @@
               <div class="frame-dot"></div>
               <span class="frame-url">linhak.com.br/checkout</span>
             </div>
-            <div class="frame-body"><iframe src="http://localhost:8080/checkout" loading="lazy"></iframe></div>
+            <div class="frame-body"><iframe data-showcase-route="/checkout" loading="lazy"></iframe></div>
             <div class="frame-label">
               <div class="bar"></div><span>Checkout / Pagamento</span>
             </div>
@@ -1132,7 +1132,7 @@
               <div class="frame-dot"></div>
               <span class="frame-url">linhak.com.br/pedido-confirmado</span>
             </div>
-            <div class="frame-body"><iframe src="http://localhost:8080/pedido-confirmado" loading="lazy"></iframe></div>
+            <div class="frame-body"><iframe data-showcase-route="/pedido-confirmado" loading="lazy"></iframe></div>
             <div class="frame-label">
               <div class="bar"></div><span>Confirmação / Rastreio</span>
             </div>
@@ -1197,7 +1197,7 @@
               <div class="frame-dot"></div>
               <span class="frame-url">linhak.com.br/admin</span>
             </div>
-            <div class="frame-body"><iframe src="http://localhost:8080/admin" loading="lazy"></iframe></div>
+            <div class="frame-body"><iframe data-showcase-route="/admin" loading="lazy"></iframe></div>
             <div class="frame-label">
               <div class="bar"></div><span>Admin / Dashboard</span>
             </div>
@@ -1211,7 +1211,7 @@
               <div class="frame-dot"></div>
               <span class="frame-url">linhak.com.br/minha-conta</span>
             </div>
-            <div class="frame-body"><iframe src="http://localhost:8080/minha-conta" loading="lazy"></iframe></div>
+            <div class="frame-body"><iframe data-showcase-route="/minha-conta" loading="lazy"></iframe></div>
             <div class="frame-label">
               <div class="bar"></div><span>Área do Cliente</span>
             </div>
@@ -1466,4 +1466,18 @@
     <div class="cta-confidential">Proposta comercial confidencial</div>
   </section>
 
+  <script>
+    const isLocalShowcaseHost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+    const showcaseBaseUrl = isLocalShowcaseHost
+      ? "http://localhost:8080/"
+      : new URL("./showcase/", window.location.href).toString();
+
+    document.querySelectorAll("iframe[data-showcase-route]").forEach((frame) => {
+      const route = frame.dataset.showcaseRoute || "/";
+      const normalizedRoute = route.startsWith("/") ? route : `/${route}`;
+      frame.src = `${showcaseBaseUrl}#${normalizedRoute}`;
+    });
+  </script>
+
+</body>
 </html>

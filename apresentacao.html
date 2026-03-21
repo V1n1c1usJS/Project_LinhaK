@@ -879,6 +879,61 @@
       align-items: flex-start;
     }
 
+    /* ── Budget Modules ── */
+    .budget-module {
+      border: 1px solid var(--gold-light);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow: var(--card-shadow);
+      margin-bottom: 16px;
+    }
+
+    .budget-module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 28px;
+      background: linear-gradient(135deg, hsla(40, 47%, 56%, 0.08), hsla(30, 25%, 94%, 0.5));
+      border-bottom: 1px solid var(--gold-light);
+    }
+
+    .budget-module-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .budget-module-total {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--gold-dark);
+      flex-shrink: 0;
+    }
+
+    .budget-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 28px;
+      border-bottom: 1px solid hsla(40, 40%, 75%, 0.2);
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--fg-muted);
+    }
+
+    .budget-item:last-child {
+      border-bottom: none;
+    }
+
+    .budget-item span:last-child {
+      font-weight: 500;
+      color: var(--fg);
+      flex-shrink: 0;
+      margin-left: 24px;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
 
@@ -924,298 +979,73 @@
       <div class="hero-badge-dot"></div>
     </div>
     <h1 class="fade-up d1">
-      Proposta Comercial por <em class="gold-text" style="font-style:normal">Blocos de Entrega</em>
+      Proposta Comercial <em class="gold-text" style="font-style:normal">Linha K</em>
     </h1>
     <div class="gold-divider fade-up d2" style="margin:32px auto"></div>
     <p class="hero-desc fade-up d3">
-      O orçamento a seguir é baseado no protótipo apresentado para a Linha K,
-      organizado por entregáveis e frentes de implementação — oferecendo
-      maior clareza sobre investimento, escopo e valor de cada etapa.
+      Orçamento organizado por módulos de entrega — com escopo claro,
+      valor por funcionalidade e custos operacionais detalhados.
     </p>
     <div class="hero-actions fade-up d4">
       <a class="hero-link hero-link-primary" href="./showcase/">Abrir showcase interativo</a>
-      <a class="hero-link" href="./orcamento.html">Ir direto para o orçamento</a>
+      <a class="hero-link" href="./orcamento.html">Ver breakdown detalhado</a>
     </div>
     <div class="hero-brand fade-up d5">Linha K</div>
   </section>
 
 
-  <!-- ═══ ABOUT THE MODEL ═══ -->
+  <!-- ═══ BUDGET BREAKDOWN ═══ -->
   <section class="section section-alt">
     <div class="container-sm">
       <div class="section-header">
-        <h2>Sobre o modelo de orçamento</h2>
+        <span class="section-label">Escopo do projeto</span>
+        <h2>Orçamento por Módulo</h2>
         <div class="gold-divider" style="margin-top:16px"></div>
       </div>
-      <div class="model-grid">
-        <div class="model-item">
-          <div class="bar"></div>
-          <h3>Visualização pelo protótipo</h3>
-          <p>Os prints do protótipo ilustram a solução proposta, permitindo visualizar a experiência antes da
-            implementação.</p>
-        </div>
-        <div class="model-item">
-          <div class="bar"></div>
-          <h3>Investimento por entregáveis</h3>
-          <p>O valor de cada bloco reflete o conjunto de funcionalidades entregues — não a quantidade de telas, mas o
-            impacto operacional real.</p>
-        </div>
-        <div class="model-item">
-          <div class="bar"></div>
-          <h3>Conexão com a operação</h3>
-          <p>A organização por blocos conecta diretamente o investimento com operação, integrações e o valor real do
-            projeto para o negócio.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-
-  <!-- ═══ BLOCK A ═══ -->
-  <section class="section">
-    <div class="container">
-      <div class="block-header">
-        <span class="block-letter">A</span>
-        <h2 class="block-title">Implantação do Ecommerce</h2>
-      </div>
-      <div class="gold-divider-wide"></div>
-
-      <div class="block-content">
-        <div class="block-info">
-          <div style="flex:1;min-width:280px">
-            <p class="block-desc">
-              Bloco principal de implantação da operação digital da marca. Contempla toda a experiência de compra — da
-              descoberta do produto à confirmação do pedido — com identidade visual premium, navegação intuitiva e
-              design responsivo para mobile e desktop.
-            </p>
-            <ul class="block-items">
-              <li>Home com hero section e vitrine de produtos</li>
-              <li>Catálogo completo com filtros por categoria, faixa de preço, além de busca com
-                autocomplete</li>
-              <li>Página de produto com galeria, pirâmide olfativa (topo, coração e fundo)</li>
-              <li>Carrinho de compras com ajuste de quantidade, resumo do pedido e indicador de frete</li>
-              <li>Checkout em 3 etapas: identificação do cliente → endereço de entrega → seleção de pagamento</li>
-              <li>Área do cliente com histórico de pedidos, status de entrega e rastreamento</li>
-              <li>Design responsivo mobile-first com animações suaves e identidade visual dourada premium</li>
-            </ul>
-          </div>
-          <div class="block-right">
-            <div class="price-card">
-              <span class="price-card-label">Investimento</span>
-              <span class="price-card-value">R$ 2.300</span>
-              <span class="price-card-pct">46% do projeto</span>
-            </div>
-          </div>
+      <div class="budget-module">
+        <div class="budget-module-header">
+          <span class="budget-module-name">Módulo 1 — Vitrine e Gestão</span>
+          <span class="budget-module-total">R$ 2.100</span>
         </div>
-
-        <div class="frames-row">
-          <div class="frame">
-            <div class="frame-browser-bar">
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <span class="frame-url">linhak.com.br</span>
-            </div>
-            <div class="frame-body"><iframe data-showcase-route="/" loading="lazy"></iframe></div>
-            <div class="frame-label">
-              <div class="bar"></div><span>Home / Vitrine</span>
-            </div>
-          </div>
+        <div class="budget-item">
+          <span>Página Inicial (Home) — visual premium, 100% adaptada para celulares</span>
+          <span>R$ 600</span>
         </div>
-        <div class="frames-row">
-          <div class="frame">
-            <div class="frame-browser-bar">
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <span class="frame-url">linhak.com.br/catalogo</span>
-            </div>
-            <div class="frame-body"><iframe data-showcase-route="/catalogo" loading="lazy"></iframe></div>
-            <div class="frame-label">
-              <div class="bar"></div><span>Catálogo / Filtros</span>
-            </div>
-          </div>
+        <div class="budget-item">
+          <span>Catálogo de Perfumes — exibição de fotos e notas olfativas</span>
+          <span>R$ 500</span>
         </div>
-        <div class="frames-row two-col">
-          <div class="frame">
-            <div class="frame-browser-bar">
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <span class="frame-url">linhak.com.br/produto/k-noir-absolu</span>
-            </div>
-            <div class="frame-body"><iframe data-showcase-route="/produto/lk-001" loading="lazy"></iframe></div>
-            <div class="frame-label">
-              <div class="bar"></div><span>Produto / Detalhes</span>
-            </div>
-          </div>
-          <div class="frame">
-            <div class="frame-browser-bar">
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <span class="frame-url">linhak.com.br/carrinho</span>
-            </div>
-            <div class="frame-body"><iframe data-showcase-route="/carrinho" loading="lazy"></iframe></div>
-            <div class="frame-label">
-              <div class="bar"></div><span>Carrinho</span>
-            </div>
-          </div>
+        <div class="budget-item">
+          <span>Painel Administrativo — cadastro de produtos e gestão de pedidos</span>
+          <span>R$ 1.000</span>
         </div>
       </div>
-    </div>
-  </section>
 
-
-  <!-- ═══ DIVIDER ═══ -->
-  <div style="padding:40px 0">
-    <div class="gold-divider"></div>
-  </div>
-
-
-  <!-- ═══ BLOCK B ═══ -->
-  <section class="section">
-    <div class="container">
-      <div class="block-header">
-        <span class="block-letter">B</span>
-        <h2 class="block-title">Integrações Operacionais</h2>
-      </div>
-      <div class="gold-divider-wide"></div>
-
-      <div class="block-content">
-        <div class="block-info">
-          <div style="flex:1;min-width:280px">
-            <p class="block-desc">
-              Integrações que conectam a loja à operação real. Garante que o pagamento seja processado com segurança, o
-              frete calculado automaticamente e o cliente informado em cada etapa — eliminando controles manuais e
-              reduzindo falhas operacionais.
-            </p>
-            <ul class="block-items">
-              <li>Gateway de pagamento integrado (Stone) com suporte a Pix com desconto e cartão de
-                crédito.</li>
-              <li>Cálculo de frete em tempo real via SuperFrete com cotação por CEP, geração de etiqueta e associação
-                automática ao pedido</li>
-              <li>Rastreamento de entrega com atualização de status por transportadora (Correios, Jadlog)
-                diretamente no painel do cliente</li>
-              <li>E-mails transacionais automáticos: confirmação de pedido, aprovação de pagamento, envio com código de
-                rastreio e entrega confirmada</li>
-            </ul>
-          </div>
-          <div class="block-right">
-            <div class="price-card">
-              <span class="price-card-label">Investimento</span>
-              <span class="price-card-value">R$ 1.700</span>
-              <span class="price-card-pct">34% do projeto</span>
-            </div>
-          </div>
+      <div class="budget-module">
+        <div class="budget-module-header">
+          <span class="budget-module-name">Módulo 2 — Motor de Vendas</span>
+          <span class="budget-module-total">R$ 2.900</span>
         </div>
-
-        <div class="frames-row">
-          <div class="frame">
-            <div class="frame-browser-bar">
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <span class="frame-url">linhak.com.br/checkout</span>
-            </div>
-            <div class="frame-body"><iframe data-showcase-route="/checkout" loading="lazy"></iframe></div>
-            <div class="frame-label">
-              <div class="bar"></div><span>Checkout / Pagamento</span>
-            </div>
-          </div>
+        <div class="budget-item">
+          <span>Carrinho e Checkout — revisão do pedido, entrega e pagamento</span>
+          <span>R$ 1.200</span>
         </div>
-        <div class="frames-row">
-          <div class="frame">
-            <div class="frame-browser-bar">
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <span class="frame-url">linhak.com.br/pedido-confirmado</span>
-            </div>
-            <div class="frame-body"><iframe data-showcase-route="/pedido-confirmado" loading="lazy"></iframe></div>
-            <div class="frame-label">
-              <div class="bar"></div><span>Confirmação / Rastreio</span>
-            </div>
-          </div>
+        <div class="budget-item">
+          <span>Integração de Pagamento — Pix e Cartão com segurança antifraude</span>
+          <span>R$ 600</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══ DIVIDER ═══ -->
-  <div style="padding:40px 0">
-    <div class="gold-divider"></div>
-  </div>
-
-
-  <!-- ═══ BLOCK C ═══ -->
-  <section class="section">
-    <div class="container">
-      <div class="block-header">
-        <span class="block-letter">C</span>
-        <h2 class="block-title">Gestão e Operação</h2>
-      </div>
-      <div class="gold-divider-wide"></div>
-
-      <div class="block-content">
-        <div class="block-info">
-          <div style="flex:1;min-width:280px">
-            <p class="block-desc">
-              Estrutura interna que sustenta toda a operação: banco de dados, API, controle de estoque e painel
-              administrativo. Substitui planilhas por um sistema centralizado, rastreável e com visibilidade completa do
-              ciclo do pedido — do faturamento à entrega confirmada.
-            </p>
-            <ul class="block-items">
-              <li>Modelagem completa do banco de dados: produtos, variações, categorias, pedidos, usuários, endereços e
-                movimentações de estoque</li>
-              <li>API REST com autenticação JWT, cobrindo todos os fluxos de loja, checkout, pedidos e administração
-              </li>
-              <li>Controle de estoque integrado: entrada manual, saída automática por venda e
-                histórico de movimentações</li>
-              <li>Painel administrativo completo: gestão de produtos, acompanhamento de pedidos por status, atualização
-                de etapas e visão do pipeline (Faturado → Separação → Enviado → Entregue)</li>
-              <li>Deploy em produção com domínio personalizado, HTTPS/SSL, CDN e ambiente otimizado para performance
-              </li>
-              <li>Ciclo de testes, ajustes e validação antes da publicação final</li>
-            </ul>
-          </div>
-          <div class="block-right">
-            <div class="price-card">
-              <span class="price-card-label">Investimento</span>
-              <span class="price-card-value">R$ 1.000</span>
-              <span class="price-card-pct">20% do projeto</span>
-            </div>
-          </div>
+        <div class="budget-item">
+          <span>Integração de Frete — cálculo automático via SuperFrete</span>
+          <span>R$ 600</span>
         </div>
-
-        <div class="frames-row">
-          <div class="frame">
-            <div class="frame-browser-bar">
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <span class="frame-url">linhak.com.br/admin</span>
-            </div>
-            <div class="frame-body"><iframe data-showcase-route="/admin" loading="lazy"></iframe></div>
-            <div class="frame-label">
-              <div class="bar"></div><span>Admin / Dashboard</span>
-            </div>
-          </div>
+        <div class="budget-item">
+          <span>Automação de E-mails — confirmações e rastreio para o cliente</span>
+          <span>R$ 250</span>
         </div>
-        <div class="frames-row">
-          <div class="frame">
-            <div class="frame-browser-bar">
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <div class="frame-dot"></div>
-              <span class="frame-url">linhak.com.br/minha-conta</span>
-            </div>
-            <div class="frame-body"><iframe data-showcase-route="/minha-conta" loading="lazy"></iframe></div>
-            <div class="frame-label">
-              <div class="bar"></div><span>Área do Cliente</span>
-            </div>
-          </div>
+        <div class="budget-item">
+          <span>Automação de NF-e — geração automática da nota fiscal</span>
+          <span>R$ 250</span>
         </div>
       </div>
     </div>
@@ -1223,26 +1053,16 @@
 
 
   <!-- ═══ SUMMARY ═══ -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="container-sm">
-      <div class="section-header">
-        <span class="section-label">Investimento total</span>
-        <h2>Resumo do Core</h2>
-        <div class="gold-divider" style="margin-top:16px"></div>
-      </div>
-
       <div class="summary-box">
         <div class="summary-row">
-          <span class="label">A — Implantação do Ecommerce</span>
-          <span class="value">R$ 2.300 <span class="pct">46%</span></span>
+          <span class="label">Módulo 1 — Vitrine e Gestão</span>
+          <span class="value">R$ 2.100 <span class="pct">42%</span></span>
         </div>
         <div class="summary-row">
-          <span class="label">B — Integrações Operacionais</span>
-          <span class="value">R$ 1.700 <span class="pct">34%</span></span>
-        </div>
-        <div class="summary-row">
-          <span class="label">C — Gestão e Operação</span>
-          <span class="value">R$ 1.000 <span class="pct">20%</span></span>
+          <span class="label">Módulo 2 — Motor de Vendas</span>
+          <span class="value">R$ 2.900 <span class="pct">58%</span></span>
         </div>
         <div class="summary-divider"></div>
         <div class="summary-total">
@@ -1251,31 +1071,7 @@
         </div>
         <div class="summary-divider"></div>
         <div class="summary-meta">
-          <span>Prazo estimado: <strong>6 a 8 semanas</strong></span>
-        </div>
-      </div>
-
-      <div class="bar-chart">
-        <div class="bar-row">
-          <span class="bar-label">Frontend (Vitrine + Checkout)</span>
-          <div class="bar-track">
-            <div class="bar-fill" style="width:46%;background:var(--gold)"></div>
-          </div>
-          <span class="bar-value">R$ 2.300</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">Integrações</span>
-          <div class="bar-track">
-            <div class="bar-fill" style="width:34%;background:hsl(40,40%,65%)"></div>
-          </div>
-          <span class="bar-value">R$ 1.700</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">Backend + Admin</span>
-          <div class="bar-track">
-            <div class="bar-fill" style="width:20%;background:hsl(40,50%,40%)"></div>
-          </div>
-          <span class="bar-value">R$ 1.000</span>
+          <span>Prazo estimado: <strong>3 meses</strong></span>
         </div>
       </div>
     </div>
@@ -1283,72 +1079,34 @@
 
 
   <!-- ═══ OPTIONAL MODULES ═══ -->
-  <section class="section">
+  <section class="section section-alt">
     <div class="container">
       <div class="section-header">
         <span class="section-label">Expansão estratégica</span>
-        <h2>Futuras Implementações</h2>
+        <h2>Módulos Opcionais</h2>
         <div class="gold-divider" style="margin-top:16px"></div>
       </div>
 
       <div class="opt-grid">
         <div class="opt-card">
-          <h3>Avaliações de Produtos</h3>
-          <p>Sistema de reviews com nota de 1 a 5 estrelas e comentário livre. Exibição pública na página do produto,
-            média geral e contagem de avaliações — gerando prova social e aumentando a conversão.</p>
+          <h3>Cadastro de Cliente</h3>
+          <p>Conta do cliente com histórico de pedidos e endereços salvos.</p>
           <div class="opt-card-footer">
-            <span class="price">R$ X.XXX</span>
-            <span class="note">Sob escopo</span>
+            <span class="price">R$ 500</span>
           </div>
         </div>
         <div class="opt-card">
-          <h3>Instagram Shopping</h3>
-          <p>Sincronização do catálogo da Linha K com a loja do Instagram: produto com foto, preço e botão de compra
-            diretamente no feed e nos stories. O usuário clica no produto e é levado direto para a página de compra —
-            sem sair do Instagram, sem fricção. Ideal para converter seguidores em clientes.</p>
+          <h3>Recomendação Automática</h3>
+          <p>Sugestão de perfumes relacionados na página do produto e no carrinho.</p>
           <div class="opt-card-footer">
-            <span class="price">R$ X.XXX</span>
-            <span class="note">Sob escopo</span>
+            <span class="price">R$ 1.000</span>
           </div>
         </div>
         <div class="opt-card">
-          <h3>Business Intelligence</h3>
-          <p>Painel gerencial com KPIs em tempo real: faturamento diário, semanal e mensal, ticket médio, produtos e
-            categorias mais vendidas, e taxa de conversão por canal. Visão consolidada para decisões rápidas sobre
-            estoque, e mix de produtos — sem precisar de planilhas.</p>
+          <h3>Dashboard de Administração</h3>
+          <p>Painel gerencial com KPIs: faturamento, pedidos por status e produtos mais vendidos.</p>
           <div class="opt-card-footer">
-            <span class="price">R$ X.XXX</span>
-            <span class="note">Sob escopo</span>
-          </div>
-        </div>
-        <div class="opt-card">
-          <h3>Promoções e Cupons</h3>
-          <p>Motor de promoções flexível: desconto percentual ou fixo por produto, categoria ou carrinho, com período de
-            vigência e limite de usos. Cupons personalizados para campanhas de marketing, parceiros ou reativação de
-            clientes. Indicação automática do item em promoção na vitrine e na listagem.</p>
-          <div class="opt-card-footer">
-            <span class="price">R$ X.XXX</span>
-            <span class="note">Sob escopo</span>
-          </div>
-        </div>
-        <div class="opt-card">
-          <h3>Recomendações Inteligentes</h3>
-          <p>Engine de recomendação que exibe produtos relevantes com base no histórico de compras, comportamento de
-            navegação e produtos mais vendidos. Seções como "Quem comprou X também levou Y" e "Fragrâncias semelhantes"
-            aumentam o ticket médio e o tempo de permanência na loja.</p>
-          <div class="opt-card-footer">
-            <span class="price">R$ X.XXX</span>
-            <span class="note">Sob escopo</span>
-          </div>
-        </div>
-        <div class="opt-card">
-          <h3>Integração WhatsApp</h3>
-          <p>Mensagens automáticas via WhatsApp Business API em cada etapa do pedido: confirmação de compra, aprovação
-            de pagamento, despacho com link de rastreio e confirmação de entrega. Substitui o e-mail como canal
-            principal de comunicação com o cliente — com abertura muito maior.</p>
-          <div class="opt-card-footer">
-            <span class="price">R$ X.XXX</span>
-            <span class="note">Sob escopo</span>
+            <span class="price">R$ 800</span>
           </div>
         </div>
       </div>
@@ -1357,7 +1115,7 @@
 
 
   <!-- ═══ RECURRING COSTS ═══ -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
       <div class="section-header">
         <h2>Custos Recorrentes</h2>
@@ -1369,13 +1127,12 @@
 
         <div class="cost-card">
           <h3>Hospedagem</h3>
-          <p>VPS cobre front-end, API, arquivos de mídia e banco de dados — tudo em um único plano. Preços promocionais no primeiro ciclo; renovação sobe conforme o plano escolhido.</p>
+          <p>VPS cobre front-end, API, arquivos de mídia e banco de dados — tudo em um único plano.</p>
           <ul class="cost-list">
             <li><span>Hostinger KVM 2</span><span>R$ 43,99/mês</span></li>
             <li><span>↳ renovação (2 anos)</span><span>R$ 77,99/mês</span></li>
             <li><span>Hostgator VPS NVMe 4</span><span>R$ 30,39/mês</span></li>
             <li><span>↳ válido por 3 anos</span><span>R$ 1.094,11 total</span></li>
-            <li><span>Escala: plano superior se tráfego crescer</span><span>—</span></li>
           </ul>
           <div class="cost-card-footer">
             <span class="price">~R$ 30–44/mês</span>
@@ -1391,7 +1148,6 @@
             <li><span>Crédito à vista</span><span>5,59%</span></li>
             <li><span>Parcelado 6×</span><span>13,59%</span></li>
             <li><span>Boleto pago</span><span>R$ 3,49</span></li>
-            <li><span>Recebimento</span><span>15 dias</span></li>
           </ul>
           <div class="cost-card-footer">
             <span class="price">% por venda</span>
@@ -1465,18 +1221,6 @@
     <div class="cta-confidential">Proposta comercial confidencial</div>
   </section>
 
-  <script>
-    const isLocalShowcaseHost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
-    const showcaseBaseUrl = isLocalShowcaseHost
-      ? "http://localhost:8080/"
-      : new URL("./showcase/", window.location.href).toString();
-
-    document.querySelectorAll("iframe[data-showcase-route]").forEach((frame) => {
-      const route = frame.dataset.showcaseRoute || "/";
-      const normalizedRoute = route.startsWith("/") ? route : `/${route}`;
-      frame.src = `${showcaseBaseUrl}#${normalizedRoute}`;
-    });
-  </script>
 
 </body>
 </html>

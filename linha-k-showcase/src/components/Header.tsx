@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Search, ShoppingBag, User, Menu, X, Instagram } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X, Instagram } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useState, useRef, useEffect } from 'react';
 import { products } from '@/data/mockData';
@@ -104,10 +104,6 @@ export default function Header() {
                 </div>
               )}
             </div>
-
-            <Link to="/minha-conta" className="p-2 hover:text-primary transition-colors">
-              <User className="w-5 h-5" />
-            </Link>
 
             <Link to="/carrinho" className="p-2 hover:text-primary transition-colors relative">
               <ShoppingBag className="w-5 h-5" />

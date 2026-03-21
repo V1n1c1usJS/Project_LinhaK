@@ -12,7 +12,6 @@ import ProductPage from "./pages/ProductPage";
 import CarrinhoPage from "./pages/CarrinhoPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import PedidoConfirmadoPage from "./pages/PedidoConfirmadoPage";
-import MinhaContaPage from "./pages/MinhaContaPage";
 import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
 
@@ -33,7 +32,6 @@ const App = () => (
             <Route path="/carrinho" element={<CarrinhoPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/pedido-confirmado" element={<PedidoConfirmadoPage />} />
-            <Route path="/minha-conta" element={<MinhaContaPage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

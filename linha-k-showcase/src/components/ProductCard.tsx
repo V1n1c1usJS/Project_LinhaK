@@ -36,8 +36,8 @@ export default function ProductCard({ product, index = 0 }: { product: Product; 
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute top-3 left-3 flex flex-col gap-1">
-            {product.badges.includes('bestseller') && <span className="badge-bestseller">Mais Vendido</span>}
             {product.badges.includes('lancamento') && <span className="badge-new">Lançamento</span>}
+            {product.badges.includes('promocao') && <span className="badge-bestseller">Promoção</span>}
           </div>
         </div>
       </Link>

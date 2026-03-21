@@ -23,7 +23,7 @@ export default function HomePage() {
             >
               <span className="font-body text-xs uppercase tracking-[0.3em] text-primary">Perfumaria Masculina Premium</span>
               <h1 className="font-display text-4xl md:text-6xl font-semibold leading-tight">
-                A arte da <span className="gold-text">sedução</span> em cada frasco
+                <span className="gold-text">Elegância</span> em cada frasco
               </h1>
               <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-md">
                 Fragrâncias inspiradas nos maiores perfumes do mundo, com qualidade premium e preço justo. Descubra sua assinatura olfativa.

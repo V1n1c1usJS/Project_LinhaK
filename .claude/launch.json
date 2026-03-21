@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "apresentacao.html (live-server)",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "npx live-server --port=5500 --open=apresentacao.html"],
+      "port": 5500
+    },
+    {
+      "name": "linha-k-showcase (Vite dev)",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd linha-k-showcase && npm run dev"],
+      "port": 8080
+    },
+    {
+      "name": "linha-k-showcase (Vite preview)",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd linha-k-showcase && npm run preview"],
+      "port": 4173
+    }
+  ]
+}

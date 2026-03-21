@@ -39,8 +39,8 @@ export default function ProductPage() {
               <img src={getProductImage(product)} alt={product.name} className="w-full h-full object-cover" />
             </div>
             <div className="absolute top-4 left-4 flex flex-col gap-2">
-              {product.badges.includes('bestseller') && <span className="badge-bestseller">Mais Vendido</span>}
               {product.badges.includes('lancamento') && <span className="badge-new">Lançamento</span>}
+              {product.badges.includes('promocao') && <span className="badge-bestseller">Promoção</span>}
             </div>
           </motion.div>
 

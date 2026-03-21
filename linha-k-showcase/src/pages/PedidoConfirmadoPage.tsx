@@ -47,7 +47,6 @@ export default function PedidoConfirmadoPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link to="/minha-conta" className="btn-gold">Meus Pedidos</Link>
             <Link to="/" className="btn-outline-gold">Voltar ao Início</Link>
           </div>
         </motion.div>

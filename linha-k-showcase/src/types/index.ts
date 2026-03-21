@@ -12,7 +12,9 @@ export interface Product {
   rating: number;
   reviewCount: number;
   stock: 'disponivel' | 'baixo' | 'esgotado';
-  badges: ('bestseller' | 'lancamento' | 'promocao')[];
+  quantity?: number;
+  badges: ('lancamento' | 'promocao')[];
+  promoDays?: number;
   ml: number;
   gender: 'masculino' | 'feminino';
 }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Core Linha K — R$ 20.000 — Breakdown</title>
+  <title>Core Linha K — R$ 5.000 — Breakdown</title>
   <style>
     :root {
       --color-text-primary: #1a1a1a;
@@ -193,50 +193,27 @@
 </head>
 
 <body>
-  <h2>Core Linha K — R$ 20.000</h2>
+  <h2>Core Linha K — R$ 5.000</h2>
   <div class="sub">MVP funcional: loja completa + checkout + pagamento + frete + admin básico</div>
   <div id="mods"></div>
   <div class="total-box" id="totals"></div>
-  <p class="note">* Valores distribuídos proporcionalmente ao esforço técnico de cada módulo. Considera equipe fullstack
-    (1-2 devs + design). Prazo estimado: 6 a 8 semanas para entrega do core completo. Manutenção mensal não inclusa.</p>
+  <p class="note">* Valores distribuídos por módulo conforme escopo final acordado. Prazo estimado: 6 a 8 semanas para entrega do core completo. Manutenção mensal não inclusa.</p>
   <script>
-    const T = 20000;
+    const T = 5000;
     const mods = [
       {
-        name: "Frontend — Vitrine & UX", pct: 30, color: "#378ADD", items: [
-          { name: "Home, header, footer, navegação responsiva", pct: 25 },
-          { name: "Catálogo 55 perfumes (grid, filtros por categoria, busca)", pct: 35 },
-          { name: "Página de produto (pirâmide olfativa, descrição, relacionados)", pct: 25 },
-          { name: "Design responsivo mobile-first", pct: 15 },
+        name: "Módulo 1 — Vitrine e Gestão", pct: 42, color: "#378ADD", items: [
+          { name: "Página Inicial (Home) — visual premium, 100% mobile", pct: 29 },
+          { name: "Catálogo de Perfumes — fotos e notas olfativas", pct: 24 },
+          { name: "Painel Administrativo — cadastro de produtos e pedidos", pct: 47 },
         ]
       },
       {
-        name: "Frontend — Checkout & Carrinho", pct: 18, color: "#1D9E75", items: [
-          { name: "Sacola / carrinho com gestão de quantidade", pct: 25 },
-          { name: "Fluxo: cadastro → endereço → pagamento → confirmação", pct: 50 },
-          { name: "Área do cliente (login, histórico, rastreamento)", pct: 25 },
-        ]
-      },
-      {
-        name: "Backend — API & Banco de Dados", pct: 22, color: "#7F77DD", items: [
-          { name: "Modelagem: produtos, categorias, pedidos, usuários, estoque", pct: 35 },
-          { name: "API REST/GraphQL completa (CRUD)", pct: 30 },
-          { name: "Autenticação (cadastro, login, recuperação senha)", pct: 15 },
-          { name: "Controle de estoque (entrada/saída)", pct: 20 },
-        ]
-      },
-      {
-        name: "Integrações essenciais", pct: 20, color: "#D85A30", items: [
-          { name: "Stone ou Mercado Pago (Pix, cartão, boleto)", pct: 40 },
-          { name: "SuperFrete (cálculo, etiqueta, rastreamento)", pct: 35 },
-          { name: "E-mail transacional (SendGrid/MailGun)", pct: 25 },
-        ]
-      },
-      {
-        name: "Admin + Deploy", pct: 10, color: "#888780", items: [
-          { name: "Painel admin básico (gerenciar produtos, pedidos, estoque)", pct: 55 },
-          { name: "Deploy, domínio, SSL, hospedagem", pct: 30 },
-          { name: "Testes e ajustes finais", pct: 15 },
+        name: "Módulo 2 — Motor de Vendas", pct: 58, color: "#1D9E75", items: [
+          { name: "Carrinho e Checkout — revisão, entrega e pagamento", pct: 41 },
+          { name: "Integração de Pagamento — Pix/Cartão com antifraude", pct: 21 },
+          { name: "Integração de Frete — cálculo automático via SuperFrete", pct: 21 },
+          { name: "Automação de NF-e e E-mails — nota fiscal + confirmações", pct: 17 },
         ]
       },
     ];
@@ -247,21 +224,18 @@
       let ih = '';
       m.items.forEach(it => {
         const iv = val * it.pct / 100;
-        ih += `<div class="it"><div><div class="it-name">${it.name}</div><div class="it-meta">${it.pct}% do módulo · ~${Math.round(iv / 80 * 10) / 10} semanas</div></div><div class="it-val">${fmt(iv)}</div></div>`;
+        ih += `<div class="it"><div><div class="it-name">${it.name}</div><div class="it-meta">${it.pct}% do módulo</div></div><div class="it-val">${fmt(iv)}</div></div>`;
       });
       html += `<div class="mod"><div class="mod-head"><span class="mod-name">${m.name}</span><span class="mod-val">${fmt(val)}</span></div><div class="bar-wrap"><div class="bar-fill" style="width:${m.pct}%;background:${m.color}"></div></div><div class="mod-items">${ih}</div></div>`;
     });
     document.getElementById('mods').innerHTML = html;
     document.getElementById('totals').innerHTML = `
-<div class="tr"><span class="tl">Frontend (vitrine + checkout)</span><span class="tv">${fmt(T * 0.48)} <span style="font-weight:400;font-size:11px">· 48%</span></span></div>
-<div class="tr"><span class="tl">Backend (API + banco + auth + estoque)</span><span class="tv">${fmt(T * 0.22)} <span style="font-weight:400;font-size:11px">· 22%</span></span></div>
-<div class="tr"><span class="tl">Integrações (pagamento + frete + email)</span><span class="tv">${fmt(T * 0.20)} <span style="font-weight:400;font-size:11px">· 20%</span></span></div>
-<div class="tr"><span class="tl">Admin + deploy</span><span class="tv">${fmt(T * 0.10)} <span style="font-weight:400;font-size:11px">· 10%</span></span></div>
+<div class="tr"><span class="tl">Módulo 1 — Vitrine e Gestão</span><span class="tv">${fmt(T * 0.42)} <span style="font-weight:400;font-size:11px">· 42%</span></span></div>
+<div class="tr"><span class="tl">Módulo 2 — Motor de Vendas</span><span class="tv">${fmt(T * 0.58)} <span style="font-weight:400;font-size:11px">· 58%</span></span></div>
 <div class="divider"></div>
 <div class="tr"><span class="tl" style="font-weight:500">Total core</span><span class="tv tv-big">${fmt(T)}</span></div>
 <div class="divider"></div>
 <div class="tr"><span class="tl">Prazo estimado</span><span class="tv">6 a 8 semanas</span></div>
-<div class="tr"><span class="tl">Valor/hora implícito (~250h)</span><span class="tv">~R$ 80/h</span></div>
 `;
   </script>
 </body>

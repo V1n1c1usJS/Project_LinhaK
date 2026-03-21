@@ -197,46 +197,61 @@
   <div class="sub">MVP funcional: loja completa + checkout + pagamento + frete + admin básico</div>
   <div id="mods"></div>
   <div class="total-box" id="totals"></div>
-  <p class="note">* Valores distribuídos por módulo conforme escopo final acordado. Prazo estimado: 6 a 8 semanas para entrega do core completo. Manutenção mensal não inclusa.</p>
+  <p class="note">* Valores distribuídos por módulo conforme escopo final acordado. Manutenção mensal não inclusa.</p>
+
+  <h2 style="margin-top:24px">Módulos Opcionais</h2>
+  <div class="sub">Expansões disponíveis após a entrega do core</div>
+  <div id="opts"></div>
+
   <script>
     const T = 5000;
     const mods = [
       {
-        name: "Módulo 1 — Vitrine e Gestão", pct: 42, color: "#378ADD", items: [
-          { name: "Página Inicial (Home) — visual premium, 100% mobile", pct: 29 },
-          { name: "Catálogo de Perfumes — fotos e notas olfativas", pct: 24 },
-          { name: "Painel Administrativo — cadastro de produtos e pedidos", pct: 47 },
+        name: "Módulo 1 — Vitrine e Gestão", val: 2100, color: "#378ADD", items: [
+          { name: "Página Inicial (Home) — visual premium, 100% mobile", val: 600 },
+          { name: "Catálogo de Perfumes — fotos e notas olfativas", val: 500 },
+          { name: "Painel Administrativo — cadastro de produtos e pedidos", val: 1000 },
         ]
       },
       {
-        name: "Módulo 2 — Motor de Vendas", pct: 58, color: "#1D9E75", items: [
-          { name: "Carrinho e Checkout — revisão, entrega e pagamento", pct: 41 },
-          { name: "Integração de Pagamento — Pix/Cartão com antifraude", pct: 21 },
-          { name: "Integração de Frete — cálculo automático via SuperFrete", pct: 21 },
-          { name: "Automação de NF-e e E-mails — nota fiscal + confirmações", pct: 17 },
+        name: "Módulo 2 — Motor de Vendas", val: 2900, color: "#1D9E75", items: [
+          { name: "Carrinho e Checkout — revisão, entrega e pagamento", val: 1200 },
+          { name: "Integração de Pagamento — Pix/Cartão com antifraude", val: 600 },
+          { name: "Integração de Frete — cálculo automático via SuperFrete", val: 600 },
+          { name: "Automação de E-mails — confirmações e rastreio para o cliente", val: 250 },
+          { name: "Automação de NF-e — geração automática da nota fiscal", val: 250 },
         ]
       },
+    ];
+    const opts = [
+      { name: "Cadastro de Cliente", desc: "Conta do cliente com histórico de pedidos e endereços salvos.", val: 500 },
+      { name: "Recomendação Automática", desc: "Sugestão de perfumes relacionados na página do produto e no carrinho.", val: 1000 },
+      { name: "Dashboard de Administração", desc: "Painel gerencial com KPIs: faturamento, pedidos por status e produtos mais vendidos.", val: 800 },
     ];
     const fmt = v => 'R$ ' + v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     let html = '';
     mods.forEach(m => {
-      const val = T * m.pct / 100;
+      const barWidth = Math.round(m.val / T * 100);
       let ih = '';
       m.items.forEach(it => {
-        const iv = val * it.pct / 100;
-        ih += `<div class="it"><div><div class="it-name">${it.name}</div><div class="it-meta">${it.pct}% do módulo</div></div><div class="it-val">${fmt(iv)}</div></div>`;
+        ih += `<div class="it"><div><div class="it-name">${it.name}</div></div><div class="it-val">${fmt(it.val)}</div></div>`;
       });
-      html += `<div class="mod"><div class="mod-head"><span class="mod-name">${m.name}</span><span class="mod-val">${fmt(val)}</span></div><div class="bar-wrap"><div class="bar-fill" style="width:${m.pct}%;background:${m.color}"></div></div><div class="mod-items">${ih}</div></div>`;
+      html += `<div class="mod"><div class="mod-head"><span class="mod-name">${m.name}</span><span class="mod-val">${fmt(m.val)}</span></div><div class="bar-wrap"><div class="bar-fill" style="width:${barWidth}%;background:${m.color}"></div></div><div class="mod-items">${ih}</div></div>`;
     });
     document.getElementById('mods').innerHTML = html;
     document.getElementById('totals').innerHTML = `
-<div class="tr"><span class="tl">Módulo 1 — Vitrine e Gestão</span><span class="tv">${fmt(T * 0.42)} <span style="font-weight:400;font-size:11px">· 42%</span></span></div>
-<div class="tr"><span class="tl">Módulo 2 — Motor de Vendas</span><span class="tv">${fmt(T * 0.58)} <span style="font-weight:400;font-size:11px">· 58%</span></span></div>
+<div class="tr"><span class="tl">Módulo 1 — Vitrine e Gestão</span><span class="tv">${fmt(2100)} <span style="font-weight:400;font-size:11px">· 42%</span></span></div>
+<div class="tr"><span class="tl">Módulo 2 — Motor de Vendas</span><span class="tv">${fmt(2900)} <span style="font-weight:400;font-size:11px">· 58%</span></span></div>
 <div class="divider"></div>
 <div class="tr"><span class="tl" style="font-weight:500">Total core</span><span class="tv tv-big">${fmt(T)}</span></div>
 <div class="divider"></div>
-<div class="tr"><span class="tl">Prazo estimado</span><span class="tv">6 a 8 semanas</span></div>
+<div class="tr"><span class="tl">Prazo estimado</span><span class="tv">3 meses</span></div>
 `;
+    let oh = '';
+    opts.forEach(o => {
+      oh += `<div class="mod"><div class="mod-head"><span class="mod-name">${o.name}</span><span class="mod-val">${fmt(o.val)}</span></div><div class="mod-items"><div class="it"><div class="it-name" style="color:var(--color-text-secondary)">${o.desc}</div></div></div></div>`;
+    });
+    document.getElementById('opts').innerHTML = oh;
   </script>
 </body>
 

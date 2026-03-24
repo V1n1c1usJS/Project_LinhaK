@@ -1,3 +1,9 @@
+export interface ProductSize {
+  ml: number;
+  price: number;
+  originalPrice?: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -16,6 +22,7 @@ export interface Product {
   badges: ('lancamento' | 'promocao')[];
   promoDays?: number;
   ml: number;
+  sizes: ProductSize[];
   gender: 'masculino' | 'feminino';
 }
 

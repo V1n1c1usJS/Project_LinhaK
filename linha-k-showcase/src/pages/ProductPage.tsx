@@ -4,13 +4,16 @@ import { ShoppingBag, Minus, Plus, Truck, Shield, ArrowLeft } from 'lucide-react
 import { useState } from 'react';
 import { products } from '@/data/mockData';
 import { useCart } from '@/contexts/CartContext';
-import { getProductImage } from '@/components/ProductCard';
+import BottleIllustration from '@/components/BottleIllustration';
+import type { ProductSize } from '@/types';
 
 export default function ProductPage() {
   const { id } = useParams();
   const product = products.find(p => p.id === id);
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
+  const defaultSize = product?.sizes.find(s => s.ml === 50) ?? product?.sizes[product.sizes.length - 1];
+  const [selectedSize, setSelectedSize] = useState<ProductSize | undefined>(defaultSize);
 
   if (!product) {
     return (
@@ -35,8 +38,20 @@ export default function ProductPage() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Image */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative">
-            <div className="aspect-square bg-secondary rounded-2xl overflow-hidden">
-              <img src={getProductImage(product)} alt={product.name} className="w-full h-full object-cover" />
+            <div className="aspect-square bg-secondary rounded-2xl flex items-center justify-center">
+              <motion.div
+                key={selectedSize?.ml}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="h-[80%] w-full flex items-center justify-center"
+              >
+                <BottleIllustration
+                  ml={selectedSize?.ml ?? 50}
+                  gender={product.gender}
+                  className="h-full w-auto max-w-[60%]"
+                />
+              </motion.div>
             </div>
             <div className="absolute top-4 left-4 flex flex-col gap-2">
               {product.badges.includes('lancamento') && <span className="badge-new">Lançamento</span>}
@@ -54,10 +69,31 @@ export default function ProductPage() {
 
             <div>
               <div className="flex items-baseline gap-3">
-                {product.originalPrice && (
-                  <span className="font-body text-lg text-muted-foreground line-through">{formatPrice(product.originalPrice)}</span>
+                {selectedSize?.originalPrice && (
+                  <span className="font-body text-lg text-muted-foreground line-through">{formatPrice(selectedSize.originalPrice)}</span>
                 )}
-                <span className="font-display text-3xl font-semibold">{formatPrice(product.price)}</span>
+                <span className="font-display text-3xl font-semibold">{formatPrice(selectedSize?.price ?? product.price)}</span>
+              </div>
+            </div>
+
+            {/* Size selector */}
+            <div className="space-y-2">
+              <p className="font-body text-xs uppercase tracking-wider text-muted-foreground">Tamanho</p>
+              <div className="flex gap-3">
+                {product.sizes.map(size => (
+                  <button
+                    key={size.ml}
+                    onClick={() => setSelectedSize(size)}
+                    className={`px-4 py-2 rounded-lg border text-sm font-body font-medium transition-all duration-200 ${
+                      selectedSize?.ml === size.ml
+                        ? 'border-primary bg-primary/10 text-primary'
+                        : 'border-border hover:border-primary/50 text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {size.ml}ml
+                    {size.ml === 5 && <span className="block text-[10px] opacity-70">Amostra</span>}
+                  </button>
+                ))}
               </div>
             </div>
 

@@ -4,6 +4,7 @@ import { ArrowRight, Instagram, Star, Truck, Shield, RefreshCw } from 'lucide-re
 import ProductCard from '@/components/ProductCard';
 import { products, categories } from '@/data/mockData';
 import heroImage from '@/assets/hero-perfumes.jpg';
+import amostrasBg from '@/assets/hero-perfumes.jpg';
 
 export default function HomePage() {
   const newArrivals = products.filter(p => p.badges.includes('lancamento') && p.gender === 'masculino');
@@ -81,6 +82,35 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Amostras Banner */}
+      <section className="relative overflow-hidden h-72 md:h-96">
+        <img
+          src={amostrasBg}
+          alt="Amostras Linha K"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/55" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative h-full flex flex-col items-center justify-center text-center px-4 gap-4"
+        >
+          <span className="font-body text-xs uppercase tracking-[0.3em] text-primary">Experimente antes de comprar</span>
+          <h2 className="font-display text-3xl md:text-5xl font-semibold text-white leading-tight">
+            Amostras disponíveis para venda
+          </h2>
+          <p className="font-body text-white/70 text-sm md:text-base max-w-lg">
+            Descubra sua fragrância ideal sem compromisso. Adquira amostras de 2 ml e encontre o seu favorito antes de levar o frasco completo.
+          </p>
+          <Link to="/catalogo" className="btn-gold inline-flex items-center gap-2 mt-2">
+            Ver Amostras <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </section>
 
       {/* Categories */}

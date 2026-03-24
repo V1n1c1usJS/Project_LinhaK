@@ -1,4 +1,13 @@
-import { Product, Order, Review } from '@/types';
+import { Product, ProductSize, Order, Review } from '@/types';
+
+function mkSizes(price50: number, origPrice50?: number): ProductSize[] {
+  const round = (n: number) => Math.round(n * 10) / 10;
+  return [
+    { ml: 5,  price: round(price50 * 0.10) },
+    { ml: 15, price: round(price50 * 0.32) },
+    { ml: 50, price: price50, ...(origPrice50 ? { originalPrice: origPrice50 } : {}) },
+  ];
+}
 
 export const categories = [
   { id: 'adocicado', name: 'Adocicado', description: 'Fragrâncias doces e envolventes', gender: 'masculino' },
@@ -15,7 +24,7 @@ export const categories = [
   { id: 'amadeirado-feminino', name: 'Amadeirado Suave', description: 'Madeiras delicadas com toque floral', gender: 'feminino' },
 ];
 
-export const products: Product[] = [
+const _raw: Omit<Product, 'sizes'>[] = [
   // ── MASCULINO ──
   {
     id: 'lk-001',
@@ -31,7 +40,7 @@ export const products: Product[] = [
     reviewCount: 127,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -49,7 +58,7 @@ export const products: Product[] = [
     reviewCount: 89,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -66,7 +75,7 @@ export const products: Product[] = [
     reviewCount: 156,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -83,7 +92,7 @@ export const products: Product[] = [
     reviewCount: 64,
     stock: 'disponivel',
     badges: ['lancamento'],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -100,7 +109,7 @@ export const products: Product[] = [
     reviewCount: 203,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -117,7 +126,7 @@ export const products: Product[] = [
     reviewCount: 178,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -134,7 +143,7 @@ export const products: Product[] = [
     reviewCount: 112,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -151,7 +160,7 @@ export const products: Product[] = [
     reviewCount: 95,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -169,7 +178,7 @@ export const products: Product[] = [
     reviewCount: 42,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -186,7 +195,7 @@ export const products: Product[] = [
     reviewCount: 134,
     stock: 'disponivel',
     badges: ['lancamento'],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -203,7 +212,7 @@ export const products: Product[] = [
     reviewCount: 87,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -220,7 +229,7 @@ export const products: Product[] = [
     reviewCount: 221,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -237,7 +246,7 @@ export const products: Product[] = [
     reviewCount: 76,
     stock: 'disponivel',
     badges: ['lancamento'],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -255,7 +264,7 @@ export const products: Product[] = [
     reviewCount: 198,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
   {
@@ -272,7 +281,7 @@ export const products: Product[] = [
     reviewCount: 58,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'masculino',
   },
 
@@ -291,7 +300,7 @@ export const products: Product[] = [
     reviewCount: 143,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'feminino',
   },
   {
@@ -308,7 +317,7 @@ export const products: Product[] = [
     reviewCount: 98,
     stock: 'disponivel',
     badges: ['lancamento'],
-    ml: 100,
+    ml: 50,
     gender: 'feminino',
   },
   {
@@ -325,7 +334,7 @@ export const products: Product[] = [
     reviewCount: 167,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'feminino',
   },
   {
@@ -342,7 +351,7 @@ export const products: Product[] = [
     reviewCount: 112,
     stock: 'disponivel',
     badges: ['lancamento'],
-    ml: 100,
+    ml: 50,
     gender: 'feminino',
   },
   {
@@ -359,7 +368,7 @@ export const products: Product[] = [
     reviewCount: 89,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'feminino',
   },
   {
@@ -376,7 +385,7 @@ export const products: Product[] = [
     reviewCount: 54,
     stock: 'disponivel',
     badges: ['lancamento'],
-    ml: 100,
+    ml: 50,
     gender: 'feminino',
   },
   {
@@ -393,7 +402,7 @@ export const products: Product[] = [
     reviewCount: 38,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'feminino',
   },
   {
@@ -410,10 +419,15 @@ export const products: Product[] = [
     reviewCount: 77,
     stock: 'disponivel',
     badges: [],
-    ml: 100,
+    ml: 50,
     gender: 'feminino',
   },
 ];
+
+export const products: Product[] = _raw.map(p => ({
+  ...p,
+  sizes: mkSizes(p.price, p.originalPrice),
+}));
 
 export const reviews: Review[] = [
   { id: 'r1', productId: 'lk-001', author: 'Carlos M.', rating: 5, comment: 'Fragrância incrível! Fixação excelente e muitos elogios.', date: '2025-12-15' },

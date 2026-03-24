@@ -1,24 +1,15 @@
 import { Link } from 'react-router-dom';
-import { ShoppingBag } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { Product } from '@/types';
-import { useCart } from '@/contexts/CartContext';
 import { motion } from 'framer-motion';
-import bottle1 from '@/assets/product-bottle-1.jpg';
-import bottle2 from '@/assets/product-bottle-2.jpg';
-import bottle3 from '@/assets/product-bottle-3.jpg';
-import bottle4 from '@/assets/product-bottle-4.jpg';
-
-const bottleImages = [bottle1, bottle2, bottle3, bottle4];
+import bottleMasc from '@/assets/product-bottle-3.jpg';
+import bottleFem  from '@/assets/product-bottle-4.jpg';
 
 export function getProductImage(product: Product): string {
-  const digits = product.id.replace(/[^0-9]/g, '');
-  const idx = (parseInt(digits) || 0) % bottleImages.length;
-  return bottleImages[idx];
+  return product.gender === 'feminino' ? bottleFem : bottleMasc;
 }
 
 export default function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
-  const { addItem } = useCart();
-
   const formatPrice = (price: number) => `R$ ${price.toFixed(2).replace('.', ',')}`;
 
   return (
@@ -53,13 +44,13 @@ export default function ProductCard({ product, index = 0 }: { product: Product; 
           )}
           <span className="text-lg font-semibold font-body text-foreground">{formatPrice(product.price)}</span>
         </div>
-        <button
-          onClick={() => addItem(product)}
+        <Link
+          to={`/produto/${product.id}`}
           className="btn-gold w-full mt-3 flex items-center justify-center gap-2"
         >
-          <ShoppingBag className="w-4 h-4" />
-          Adicionar
-        </button>
+          <Eye className="w-4 h-4" />
+          Ver Produto
+        </Link>
       </div>
     </motion.div>
   );
